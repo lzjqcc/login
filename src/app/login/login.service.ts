@@ -17,10 +17,9 @@ export class UserService {
     });*/
 
     if (!(user.password === '123' && user.username === 'li')) {
-      return null;
+      return 'fail';
     }
     this.router.navigateByUrl('/success');
-    return 'success';
-
+    return null;
   }
 }

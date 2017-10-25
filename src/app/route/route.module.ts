@@ -11,6 +11,7 @@ const appRoutes: Routes = [
 
 @NgModule({
     imports: [
+      /*如果是在特性模块中使用forChild,在根模块中使用forRoot*/
       RouterModule.forRoot(appRoutes)
     ],
     /*不加上这句在浏览器不认识app.component.html中<router-outlet></router-outlet>*/

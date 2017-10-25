@@ -1,5 +1,7 @@
 <div class="container">
+
   <form #form="ngForm" (ngSubmit)="doLogin()">
+    <p *ngIf="message!=null" class="bg-danger">用户名或密码错误</p>
     <div class="form-group" >
       <label for="exampleInputEmail1">姓名</label>
       <input type="text" id="username" class="form-control" name="username" [(ngModel)]="user.username" id="exampleInputEmail1"
