@@ -1,0 +1,16 @@
+form{
+  width: 50%;
+  margin-left: 25%;
+  margin-top:10%;
+}
+form input{
+  width: 40%;
+  margin-left: 30%;
+}
+form label{
+  margin-left: 30%;
+}
+form button{
+  width: 20%;
+  margin-left: 40%;
+}
