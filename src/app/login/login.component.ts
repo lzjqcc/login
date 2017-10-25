@@ -9,13 +9,17 @@ import {User} from './user';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  user: User;
-
+  user: User = {
+    username: 'dd',
+    password: '123'
+  };
+  username: string;
   constructor(private alertService: AlertService, private userService: UserService) {
   }
 
-  doLogin(user: User): void {
-    let resulet = this.userService.doLogin(user);
+  doLogin(): void {
+    let resulet = this.userService.doLogin(this.user);
+    console.log(resulet);
     this.alertService.injectMessage(resulet);
   }
 }

@@ -9,6 +9,7 @@ import {SuccessComponent} from './success/success.component';
 import {AlertService} from './alter/alert.service';
 import {UserService} from './login/login.service';
 import {HttpModule} from "@angular/http";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import {HttpModule} from "@angular/http";
     BrowserModule,
     RouteModule,
     HttpModule,
+    FormsModule
   ],
   providers: [AlertService, UserService],
   bootstrap: [AppComponent]
