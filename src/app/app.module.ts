@@ -8,6 +8,7 @@ import {SuccessComponent} from './success/success.component';
 import {UserService} from './login/login.service';
 import {HttpModule} from "@angular/http";
 import {FormsModule} from "@angular/forms";
+import {MarkdownModule} from "angular2-markdown";
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {FormsModule} from "@angular/forms";
     BrowserModule,
     RouteModule,
     HttpModule,
-    FormsModule
+    FormsModule,
+    MarkdownModule.forRoot(),
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

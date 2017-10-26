@@ -19,8 +19,6 @@ export class LoginComponent {
   }
 
   doLogin(): void {
-    let resulet = this.userService.doLogin(this.user);
-    console.log(resulet);
-    this.message = resulet;
+   this.userService.doLogin(this.user);
   }
 }

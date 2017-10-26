@@ -7,19 +7,16 @@ import {ActivatedRoute, Router} from '@angular/router';
 
 @Injectable()
 export class UserService {
+
   constructor(private http: Http, private router: Router) {
 
   }
 
-  doLogin(user: User): string {
-    /*return this.http.post(urlString + 'login', user).subscribe(data => {
+  doLogin(user: User): void {
+      let body = {nameOrEmail: user.username, password: user.password};
+     this.http.post('http://localhost:8080/api/loginAct', body).subscribe(data =>{
+       console.log(data);
+     });
 
-    });*/
-
-    if (!(user.password === '123' && user.username === 'li')) {
-      return 'fail';
-    }
-    this.router.navigateByUrl('/success');
-    return null;
-  }
+}
 }
