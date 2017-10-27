@@ -9,12 +9,14 @@ import {UserService} from './login/login.service';
 import {HttpModule} from "@angular/http";
 import {FormsModule} from "@angular/forms";
 import {MarkdownModule} from "angular2-markdown";
+import {ArticleComponent} from "./aritle/article.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    SuccessComponent
+    SuccessComponent,
+    ArticleComponent
   ],
   imports: [
     BrowserModule,

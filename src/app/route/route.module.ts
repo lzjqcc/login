@@ -3,9 +3,11 @@ import {RouterModule, Routes} from '@angular/router';
 import {LoginComponent} from "../login/login.component";
 import {rootRoute} from '@angular/router/src/router_module';
 import {SuccessComponent} from "../success/success.component";
+import {ArticleComponent} from "../aritle/article.component";
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
+  {path: 'article', component: ArticleComponent},
   {path: 'success', component: SuccessComponent}
 ];
 

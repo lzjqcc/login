@@ -1,1 +1,1 @@
-export const urlString: String = 'http://localhost:8080/';
+export const urlString: String = 'http://localhost:18080/dobb_cusume/';

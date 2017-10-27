@@ -12,11 +12,20 @@ export class UserService {
 
   }
 
-  doLogin(user: User): void {
-      let body = {nameOrEmail: user.username, password: user.password};
-     this.http.post('http://localhost:8080/api/loginAct', body).subscribe(data =>{
-       console.log(data);
-     });
 
-}
+// application/x-www-form-urlencoded
+  doLogin(user: User) {
+    const body = {nameOrEmail: user.username, password: user.password};
+    // 'nameOrEmail=bar&password=moe' 使用与@RequestParam
+    // {headers: new Headers({'Content-type': 'application/x-www-form-urlencoded'})}
+    return this.http.post(urlString + 'login', body ).map((response: Response) => {
+      // login successful if there's a jwt token in the response
+      let user = response.json();
+      if (user && user.token) {
+        localStorage.setItem('currentUser', JSON.stringify(user));
+      }
+
+      return user;
+    });
+  }
 }
