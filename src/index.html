@@ -4,7 +4,23 @@
   <meta charset="utf-8">
   <title>Login</title>
   <base href="/">
+  <style>
+     #markdown img{
+      max-width: 80%;
+    }
+     html {
+       font-family: GillSans, Calibri, Trebuchet, sans-serif;
+     }
+     body {
+       display: flex;
+       min-height: 100vh;
+       flex-direction: column;
+     }
 
+     main {
+       flex: 1 0 auto;
+     }
+  </style>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- 新 Bootstrap 核心 CSS 文件 -->
@@ -16,9 +32,34 @@
   <script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism.min.css" rel="stylesheet"/>
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 </head>
 <body>
 
 <app-root></app-root>
+
+<footer class="page-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <h5 class="white-text">Footer Content</h5>
+        <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+      </div>
+      <div class="col l4 offset-l2 s12">
+        <h5 class="white-text">Links</h5>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container">
+      © 2014 Copyright Text
+      <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+    </div>
+  </div>
+</footer>
 </body>
 </html>

@@ -10,12 +10,14 @@ import {HttpModule} from "@angular/http";
 import {FormsModule} from "@angular/forms";
 import {MarkdownModule} from "angular2-markdown";
 import {ArticleComponent} from "./aritle/article.component";
+import {UnlessDirective} from './directive/img.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SuccessComponent,
+    UnlessDirective,
     ArticleComponent
   ],
   imports: [

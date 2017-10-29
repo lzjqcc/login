@@ -6,4 +6,19 @@
   padding: 10px;
 
 }
+.pre{
+  width: 50%; height: 731px;word-wrap: break-word; word-break: break-all ;white-space: pre-wrap;float: left;;
+}
+.mardowndiv{
+  padding-left: 35px;padding-right: 35px; padding-bottom: 671px; margin-bottom: 10px;outline: 0
+}
+.mardowndiv p{
+  margin-top: 0px;
+}
+nav ul li{
+  margin-left: 14%;
+  float: left;
+  cursor:pointer ;
+}
+
 
