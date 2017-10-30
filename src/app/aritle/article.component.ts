@@ -1,11 +1,12 @@
 import {
-  AfterContentChecked, AfterViewChecked, AfterViewInit, Component, ElementRef, OnChanges, OnInit, Renderer2,
+  AfterContentChecked, AfterViewChecked, AfterViewInit, Component, ElementRef, OnChanges, OnInit, Output, Renderer2,
   SimpleChanges, TemplateRef, ViewChild
 } from '@angular/core';
 import {TipInfo} from './article.tip';
 import {stringDistance} from "codelyzer/util/utils";
 
 declare var jQuery: any;
+declare let ace: any;
 
 @Component({
   selector: 'app-article',
@@ -14,9 +15,10 @@ declare var jQuery: any;
 })
 
 
-export class ArticleComponent implements OnInit, AfterContentChecked {
+export class ArticleComponent implements OnInit, AfterContentChecked, AfterViewInit {
 
-
+  editor: any;
+  @Output()
   content: string;
   private lastColor: string;
   tip: TipInfo;
@@ -25,12 +27,18 @@ export class ArticleComponent implements OnInit, AfterContentChecked {
   private preFlag: boolean;
   private cursorPosition: number;
   leftMousePosition = {
-    top : 0,
-    left : 0
+    top: 0,
+    left: 0
   };
+
+  ngAfterViewInit(): void {
+
+  }
+
   /* @ViewChild('#help') 这个表示在需找<p #help></p> 这种标签 el.nativeElement表示html中原始标签
    el: ElementRef;*/
   ngAfterContentChecked(): void {
+
   }
 
   constructor(private render: Renderer2, private el: ElementRef) {
@@ -39,6 +47,15 @@ export class ArticleComponent implements OnInit, AfterContentChecked {
 
   ngOnInit(): void {
     this.tip = new TipInfo();
+    let editorElement = this.getLeftPreNativeElement().children[0];
+    this.editor = ace.edit(editorElement);
+    this.editor.$blockScrolling = Infinity;
+    this.editor.getSession().setUseWrapMode(true);
+    this.editor.getSession().setMode('ace/mode/markdown');
+    this.editor.on("change", (e: any) => {
+      let val = this.editor.getValue();
+      this.content = val;
+    });
   }
 
   /**
@@ -46,13 +63,13 @@ export class ArticleComponent implements OnInit, AfterContentChecked {
    * @param {string} id
    */
   mouseOver(id: string) {
-   // console.log(this.el);
+    // console.log(this.el);
     // 根el 表示一个 <app-article><app-article>
     const queryElement = this.el.nativeElement.querySelector('#' + id);
 
     this.lastColor = queryElement.style.color;
     this.render.setStyle(queryElement, 'color', 'red');
-   // console.log(queryElement.style.color);
+    // console.log(queryElement.style.color);
   }
 
   /**
@@ -60,7 +77,7 @@ export class ArticleComponent implements OnInit, AfterContentChecked {
    * @param {string} id
    */
   mouseLeave(id: string) {
-  //  console.log(id);
+    //  console.log(id);
     const queryElement = this.el.nativeElement.querySelector('#' + id);
     this.render.setStyle(queryElement, 'color', this.lastColor);
   }
@@ -109,33 +126,12 @@ export class ArticleComponent implements OnInit, AfterContentChecked {
   }
 
   keyUp(event: any) {
-  /*  console.log(this.getLeftPreNativeElement().innerText.length);
-    console.log(this.getLeftPreNativeElement().innerText);*/
-     const range = window.getSelection().getRangeAt(0);
-     console.log(range.getBoundingClientRect());
-/*     this.leftMousePosition.height = range.getBoundingClientRect().height;
-     this.leftMousePosition.width = range.getBoundingClientRect().width;
-     this.leftMousePosition.bottom = range.getBoundingClientRect().bottom;
-     this.leftMousePosition.right = range.getBoundingClientRect().right;*/
-     this.leftMousePosition.top = range.getBoundingClientRect().top;
-     this.leftMousePosition.left = range.getBoundingClientRect().left;
+    console.log(event);
   }
-  private createElementSpan(left: number, top: number) {
-    const children = this.getLeftPreNativeElement().children[0].children;
-    for ( let child in children){
 
-    }
-    let p = document.createElement('span');
-    this.getLeftPreNativeElement().children[0].appendChild(p);
-    p.innerHTML = 'a;skdfj';
-    p.style.position = 'absoluate';
-    p.style.top = top + 'px';
-    p.style.left = left + 'px';
-  }
   onClick() {
     // this.content = this.getLeftPreNativeElement().children[0].innerText = this.removeLastN(this.getLeftPreNativeElement().children[0].innerText) + 'dd';
-   // this.setCursorContent(this.cursorPosition, '真实才');
-    this.createElementSpan(this.leftMousePosition.top , this.leftMousePosition.left);
+    // this.setCursorContent(this.cursorPosition, '真实才');
     console.log(this.cursorPosition);
   }
 
@@ -180,7 +176,6 @@ export class ArticleComponent implements OnInit, AfterContentChecked {
       console.log(window.getSelection().getRangeAt(0).endOffset);
       console.log(window.getSelection().focusOffset);*/
     this.cursorPosition = document.getSelection().getRangeAt(0).endOffset;
-    console.log(document.getSelection().focusOffset+"px");
     console.log();
   }
 
@@ -200,5 +195,63 @@ export class ArticleComponent implements OnInit, AfterContentChecked {
     sel.addRange(range);
     // 在光标闻之插入
     document.execCommand('insertTEXT', false, '' + content + '');
+  }
+  insertContent(type: string) {
+    console.log(this.editor);
+    if (!this.editor) return;
+    let selectedText = this.editor.getSelectedText();
+    let isSeleted = !!selectedText;
+    let startSize = 2;
+    let initText: string = '';
+    let range = this.editor.selection.getRange();
+    switch (type) {
+      case 'Bold':
+        initText = 'Bold Text';
+        selectedText = `**${selectedText || initText}**`;
+        break;
+      case 'Italic':
+        initText = 'Italic Text';
+        selectedText = `*${selectedText || initText}*`;
+        startSize = 1;
+        break;
+      case 'Heading':
+        initText = 'Heading';
+        selectedText = `# ${selectedText || initText}`;
+        break;
+      case 'Refrence':
+        initText = 'Refrence';
+        selectedText = `> ${selectedText || initText}`;
+        break;
+      case 'Link':
+        selectedText = `[](http://)`;
+        startSize = 1;
+        break;
+      case 'Image':
+        selectedText = `![](http://)`;
+        break;
+      case 'Ul':
+        selectedText = `- ${selectedText || initText}`
+        break;
+      case 'Ol':
+        selectedText = `1. ${selectedText || initText}`
+        startSize = 3;
+        break;
+      case 'Code':
+        initText = 'Source Code';
+        selectedText = "```language\r\n" + (selectedText || initText) + "\r\n```";
+        startSize = 3;
+        break;
+    }
+    this.editor.session.replace(range, selectedText);
+
+    if (!isSeleted) {
+      range.start.column += startSize;
+      range.end.column = range.start.column + initText.length;
+      this.editor.selection.setRange(range);
+    }
+    console.log(range);
+    console.log(range.start.column);
+    console.log(this.editor);
+    this.editor.focus();
   }
 }

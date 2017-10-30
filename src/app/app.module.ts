@@ -11,6 +11,7 @@ import {FormsModule} from "@angular/forms";
 import {MarkdownModule} from "angular2-markdown";
 import {ArticleComponent} from "./aritle/article.component";
 import {UnlessDirective} from './directive/img.directive';
+import {MarkdownEditorComponent} from "./md-editor/md-editor.component";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {UnlessDirective} from './directive/img.directive';
     LoginComponent,
     SuccessComponent,
     UnlessDirective,
-    ArticleComponent
+    ArticleComponent,
+    MarkdownEditorComponent
   ],
   imports: [
     BrowserModule,

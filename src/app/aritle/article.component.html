@@ -28,7 +28,7 @@
   <!-- Navbar content -->
   <!--data-position="bottom" data-delay="50" data-tooltip="I am a tooltip"-->
   <ul>
-    <li id="link" (mouseover)="mouseOver('link')" (mouseleave)="mouseLeave('link')" (click)="onClick()" [title]="tip.link"><i
+    <li id="link" (mouseover)="mouseOver('link')" (mouseleave)="mouseLeave('link')" (click)="insertContent('Refrence')" [title]="tip.link"><i
       class="large material-icons">insert_link</i></li>
     <li id="pic" (mouseover)="mouseOver('pic')" (mouseleave)="mouseLeave('pic')" [title]="tip.pic"><i
       class="medium material-icons ">image</i></li>
@@ -46,7 +46,7 @@
 
 <div style=" width: 95%;margin:10px auto">
 <pre style="margin: 0 auto;" class="form-control font-rich pre col s12 m2 z-depth-5 card-panel" (mouseover)="preMouseOver('left')" (scroll)="scroll('left')" id="leftPre" >
-  <div id="div"  (click)="divClick()" contenteditable="true" (keyup)="keyUp($event)" class="mardowndiv" (input)="content=$event.target.innerText" aria-placeholder="输入。。。"></div>
+  <div id="div"  (click)="divClick()" contenteditable="true"  class="mardowndiv"   aria-placeholder="输入。。。"></div>
 </pre>
   <pre style="margin: 0 auto;" class="form-control font-rich pre col s12 m2 z-depth-5 card-panel" (mouseover)="preMouseOver('right')" id="rightPre" (scroll)="scroll('right')">
     <div id="markdown" class="mardowndiv" >
