@@ -7,7 +7,7 @@ import {stringDistance} from "codelyzer/util/utils";
 
 declare var jQuery: any;
 declare let ace: any;
-
+declare let BootstrapDialog: any;
 @Component({
   selector: 'app-article',
   templateUrl: './article.component.html',
@@ -132,7 +132,7 @@ export class ArticleComponent implements OnInit, AfterContentChecked, AfterViewI
   onClick() {
     // this.content = this.getLeftPreNativeElement().children[0].innerText = this.removeLastN(this.getLeftPreNativeElement().children[0].innerText) + 'dd';
     // this.setCursorContent(this.cursorPosition, '真实才');
-    console.log(this.cursorPosition);
+
   }
 
 
@@ -253,5 +253,21 @@ export class ArticleComponent implements OnInit, AfterContentChecked, AfterViewI
     console.log(range.start.column);
     console.log(this.editor);
     this.editor.focus();
+    console.log(this.cursorPosition);
+    BootstrapDialog.show({
+      title: 'Default Title',
+      message: 'Click buttons below.',
+      buttons: [{
+        label: 'Message 1',
+        action: function(dialog) {
+          dialog.setMessage('Message 1');
+        }
+      }, {
+        label: 'Message 2',
+        action: function(dialog) {
+          dialog.setMessage('Message 2');
+        }
+      }]
+    });
   }
 }

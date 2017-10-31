@@ -28,11 +28,14 @@
   <!-- Navbar content -->
   <!--data-position="bottom" data-delay="50" data-tooltip="I am a tooltip"-->
   <ul>
-    <li id="link" (mouseover)="mouseOver('link')" (mouseleave)="mouseLeave('link')" (click)="insertContent('Refrence')" [title]="tip.link"><i
+    <li id="link" (mouseover)="mouseOver('link')" (mouseleave)="mouseLeave('link')" (click)="insertContent('Link')"
+        [title]="tip.link"><i
       class="large material-icons">insert_link</i></li>
-    <li id="pic" (mouseover)="mouseOver('pic')" (mouseleave)="mouseLeave('pic')" [title]="tip.pic"><i
+    <li id="pic" (mouseover)="mouseOver('pic')" (mouseleave)="mouseLeave('pic')" [title]="tip.pic"
+        (click)="insertContent('Image')"><i
       class="medium material-icons ">image</i></li>
-    <li id="code" (mouseover)="mouseOver('code')" (mouseleave)="mouseLeave('code')" [title]="tip.code"><i
+    <li id="code" (mouseover)="mouseOver('code')" (mouseleave)="mouseLeave('code')" [title]="tip.code"
+        (click)="insertContent('Code')"><i
       class="medium material-icons ">code</i></li>
     <li id="local" (mouseover)="mouseOver('local')" (mouseleave)="mouseLeave('local')" [title]="tip.local"><i
       class="medium material-icons ">file_upload</i></li>
@@ -42,14 +45,40 @@
   </ul>
 
 </nav>
+<!-- Button trigger modal 弹出框的触发器 -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Launch demo modal
+</button>
+
+<!-- Modal 弹出框的结构 -->
+<div class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <p>One fine body…</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 
 <div style=" width: 95%;margin:10px auto">
-<pre style="margin: 0 auto;" class="form-control font-rich pre col s12 m2 z-depth-5 card-panel" (mouseover)="preMouseOver('left')" (scroll)="scroll('left')" id="leftPre" >
-  <div id="div"  (click)="divClick()" contenteditable="true"  class="mardowndiv"   aria-placeholder="输入。。。"></div>
+  <image-upload [url]="'my-url.com'"  [buttonCaption]="'上传图片'"></image-upload>
+  <pre style="margin: 0 auto;" class="form-control font-rich pre col s12 m2 z-depth-5 card-panel"
+       (mouseover)="preMouseOver('left')" (scroll)="scroll('left')" id="leftPre">
+  <div id="div" (click)="divClick()" contenteditable="true" class="mardowndiv" aria-placeholder="输入。。。"></div>
 </pre>
-  <pre style="margin: 0 auto;" class="form-control font-rich pre col s12 m2 z-depth-5 card-panel" (mouseover)="preMouseOver('right')" id="rightPre" (scroll)="scroll('right')">
-    <div id="markdown" class="mardowndiv" >
+  <pre style="margin: 0 auto;" class="form-control font-rich pre col s12 m2 z-depth-5 card-panel"
+       (mouseover)="preMouseOver('right')" id="rightPre" (scroll)="scroll('right')">
+    <div id="markdown" class="mardowndiv">
      <markdown [data]="content"></markdown>
     </div>
   </pre>
