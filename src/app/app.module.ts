@@ -12,7 +12,11 @@ import {MarkdownModule} from "angular2-markdown";
 import {ArticleComponent} from "./aritle/article.component";
 import {UnlessDirective} from './directive/img.directive';
 import {MarkdownEditorComponent} from "./md-editor/md-editor.component";
-
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {MatDialogModule, MatDialogRef} from "@angular/material";
+import {MyDialog} from "./dialog/MyDialog";
+import {FullscreenOverlayContainer, OverlayContainer} from "@angular/cdk/overlay";
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +24,8 @@ import {MarkdownEditorComponent} from "./md-editor/md-editor.component";
     SuccessComponent,
     UnlessDirective,
     ArticleComponent,
-    MarkdownEditorComponent
+    MarkdownEditorComponent,
+    MyDialog
   ],
   imports: [
     BrowserModule,
@@ -28,8 +33,15 @@ import {MarkdownEditorComponent} from "./md-editor/md-editor.component";
     HttpModule,
     FormsModule,
     MarkdownModule.forRoot(),
+    NgbModule.forRoot(),
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
-  providers: [UserService],
+  entryComponents: [
+    ArticleComponent,
+    MyDialog
+  ],
+  providers: [UserService, {provide: OverlayContainer, useClass: FullscreenOverlayContainer}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
