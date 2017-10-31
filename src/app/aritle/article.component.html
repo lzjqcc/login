@@ -3,28 +3,24 @@
 -->
 <!--自动换行关键：word-wrap: break-word; word-break: break-all ;white-space: pre-wrap;-->
 <!--insert_link-->
-<div class="row">
-  <div class="input-field col s6 " style="margin-left: 25%">
+  <div class="input-field col s6 " style="margin-left: 25%;width: 50%;">
     <input id="first_name2" type="text" class="validate flow-text center" style="font-size: 2em">
     <label class="active " for="first_name2">文章标题</label>
   </div>
-  <div class="fixed-action-btn  horizontal  click-to-toggle">
-    <a class="btn-floating btn-large red">
-      <i class="material-icons">更多</i>
-    </a>
-    <ul>
-      <li><a class="btn-floating center">提交文章</a></li>
-      <li><a class="btn-floating yellow darken-1 center">舍弃</a></li>
-      <li><a class="btn-floating green center">存稿</a></li>
-      <li (mouseover)="mouseOver()"><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
-    </ul>
-  </div>
-</div>
-<div>
 
+<div class="fixed-action-btn  horizontal  click-to-toggle">
+  <a class="btn-floating btn-large red">
+    <i class="material-icons">更多</i>
+  </a>
+  <ul>
+    <li><a class="btn-floating center">提交文章</a></li>
+    <li><a class="btn-floating yellow darken-1 center">舍弃</a></li>
+    <li><a class="btn-floating green center">存稿</a></li>
+    <li (mouseover)="mouseOver()"><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+  </ul>
 </div>
 <!-- Navbar content -->
-<nav class="navbar navbar-light bg-primary" style="width: 50%;margin: 0 auto">
+<nav class="navbar-light bg-primary" style="width: 50%;margin: 0 auto">
   <!-- Navbar content -->
   <!--data-position="bottom" data-delay="50" data-tooltip="I am a tooltip"-->
   <ul>
@@ -45,33 +41,8 @@
   </ul>
 
 </nav>
-<!-- Button trigger modal 弹出框的触发器 -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-  Launch demo modal
-</button>
-
-<!-- Modal 弹出框的结构 -->
-<div class="modal fade">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h4 class="modal-title">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        <p>One fine body…</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
 
 <div style=" width: 95%;margin:10px auto">
-  <image-upload [url]="'my-url.com'"  [buttonCaption]="'上传图片'"></image-upload>
   <pre style="margin: 0 auto;" class="form-control font-rich pre col s12 m2 z-depth-5 card-panel"
        (mouseover)="preMouseOver('left')" (scroll)="scroll('left')" id="leftPre">
   <div id="div" (click)="divClick()" contenteditable="true" class="mardowndiv" aria-placeholder="输入。。。"></div>

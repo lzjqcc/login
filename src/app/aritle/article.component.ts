@@ -4,18 +4,17 @@ import {
 } from '@angular/core';
 import {TipInfo} from './article.tip';
 import {stringDistance} from "codelyzer/util/utils";
+import {MatDialog} from "@angular/material";
 
 declare var jQuery: any;
 declare let ace: any;
-declare let BootstrapDialog: any;
+
 @Component({
   selector: 'app-article',
   templateUrl: './article.component.html',
   styleUrls: ['./article.component.css'],
 })
-
-
-export class ArticleComponent implements OnInit, AfterContentChecked, AfterViewInit {
+export class ArticleComponent implements OnInit, AfterContentChecked {
 
   editor: any;
   @Output()
@@ -26,14 +25,6 @@ export class ArticleComponent implements OnInit, AfterContentChecked, AfterViewI
   private leftPre: any;
   private preFlag: boolean;
   private cursorPosition: number;
-  leftMousePosition = {
-    top: 0,
-    left: 0
-  };
-
-  ngAfterViewInit(): void {
-
-  }
 
   /* @ViewChild('#help') 这个表示在需找<p #help></p> 这种标签 el.nativeElement表示html中原始标签
    el: ElementRef;*/
@@ -41,7 +32,7 @@ export class ArticleComponent implements OnInit, AfterContentChecked, AfterViewI
 
   }
 
-  constructor(private render: Renderer2, private el: ElementRef) {
+  constructor(private render: Renderer2, private el: ElementRef, private dialog: MatDialog) {
 
   }
 
@@ -196,6 +187,7 @@ export class ArticleComponent implements OnInit, AfterContentChecked, AfterViewI
     // 在光标闻之插入
     document.execCommand('insertTEXT', false, '' + content + '');
   }
+
   insertContent(type: string) {
     console.log(this.editor);
     if (!this.editor) return;
@@ -254,20 +246,28 @@ export class ArticleComponent implements OnInit, AfterContentChecked, AfterViewI
     console.log(this.editor);
     this.editor.focus();
     console.log(this.cursorPosition);
-    BootstrapDialog.show({
-      title: 'Default Title',
-      message: 'Click buttons below.',
-      buttons: [{
-        label: 'Message 1',
-        action: function(dialog) {
-          dialog.setMessage('Message 1');
-        }
-      }, {
-        label: 'Message 2',
-        action: function(dialog) {
-          dialog.setMessage('Message 2');
-        }
-      }]
+    this.dialog.open(IFrameDialog,{
+      height: '400px',
+      width: '600px',
     });
   }
+}
+@Component({
+  selector: 'demo-iframe-dialog',
+  styles: [
+    `iframe {
+      width: 800px;
+    }`
+  ],
+  template: `
+    <h2 mat-dialog-title>Delete all</h2>
+    <mat-dialog-content>Are you sure?</mat-dialog-content>
+    <mat-dialog-actions>
+      <button mat-button mat-dialog-close>No</button>
+      <!-- Can optionally provide a result for the closing dialog. -->
+      <button mat-button [mat-dialog-close]="true">Yes</button>
+    </mat-dialog-actions>
+  `
+})
+export class IFrameDialog {
 }
