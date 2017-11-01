@@ -3,6 +3,7 @@
 -->
 <!--自动换行关键：word-wrap: break-word; word-break: break-all ;white-space: pre-wrap;-->
 <!--insert_link-->
+<!--<button (click)="this.onClick()" class="btn btn-info">button</button>-->
   <div class="input-field col s6 " style="margin-left: 25%;width: 50%;">
     <input id="first_name2" type="text" class="validate flow-text center" style="font-size: 2em">
     <label class="active " for="first_name2">文章标题</label>
@@ -28,8 +29,8 @@
         [title]="tip.link"><i
       class="large material-icons">insert_link</i></li>
     <li id="pic" (mouseover)="mouseOver('pic')" (mouseleave)="mouseLeave('pic')" [title]="tip.pic"
-        (click)="insertContent('Image')"><i
-      class="medium material-icons ">image</i></li>
+        (click)="onClick()"><i
+      class="medium material-icons">image</i></li>
     <li id="code" (mouseover)="mouseOver('code')" (mouseleave)="mouseLeave('code')" [title]="tip.code"
         (click)="insertContent('Code')"><i
       class="medium material-icons ">code</i></li>
@@ -50,12 +51,11 @@
   <pre style="margin: 0 auto;" class="form-control font-rich pre col s12 m2 z-depth-5 card-panel"
        (mouseover)="preMouseOver('right')" id="rightPre" (scroll)="scroll('right')">
     <div id="markdown" class="mardowndiv">
-     <markdown [data]="content"></markdown>
+     <!--<markdown [data]="content"></markdown>-->
+      <div markdown-to-html [data]="content"></div>
     </div>
   </pre>
 </div>
-<!--</pre>-->
-
 <!--  撒旦法斯蒂芬斯蒂芬李师傅介绍了开发建设浪费岁的克劳福德死了萨拉东风科技类似的看风景的斯洛伐克受到法律独守空房类似的看风景克里斯多夫斯蒂芬森-->
 <!--
 outline:0;-->

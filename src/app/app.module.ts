@@ -8,13 +8,17 @@ import {UserService} from './login/login.service';
 import {HttpModule} from "@angular/http";
 import {FormsModule} from "@angular/forms";
 import {MarkdownModule} from "angular2-markdown";
-import {ArticleComponent, IFrameDialog} from "./aritle/article.component";
+import {ArticleComponent} from "./aritle/article.component";
 import {UnlessDirective} from './directive/img.directive';
 import {MarkdownEditorComponent} from "./md-editor/md-editor.component";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {MatDialogModule, MatDialogRef} from "@angular/material";
+import {MatButtonModule, MatDialogModule, MatDialogRef, MatInputModule, MatTabsModule} from "@angular/material";
 import {FullscreenOverlayContainer, OverlayContainer} from "@angular/cdk/overlay";
+import {IFrameDialog} from "./aritle/alter.dialog";
+import {TestCompontent} from "./test/test.compontent";
+import {MarkdownToHtmlModule} from "ng2-markdown-to-html";
+import {ImageUploadModule} from "angular2-image-upload";
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,8 +27,8 @@ import {FullscreenOverlayContainer, OverlayContainer} from "@angular/cdk/overlay
     UnlessDirective,
     ArticleComponent,
     MarkdownEditorComponent,
-    IFrameDialog
-
+    IFrameDialog,
+    TestCompontent
   ],
   imports: [
     BrowserModule,
@@ -33,13 +37,18 @@ import {FullscreenOverlayContainer, OverlayContainer} from "@angular/cdk/overlay
     FormsModule,
     MarkdownModule.forRoot(),
     NgbModule.forRoot(),
+    MarkdownToHtmlModule.forRoot(),
+    MatInputModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatTabsModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    ImageUploadModule.forRoot()
   ],
   entryComponents: [
     IFrameDialog
   ],
-  providers: [UserService, {provide: OverlayContainer, useClass: FullscreenOverlayContainer}],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

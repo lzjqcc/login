@@ -1,0 +1,21 @@
+<div>
+  <mat-dialog-content>
+    <mat-tab-group>
+      <mat-tab label="本地图片">
+        <image-upload [max]="100"
+                      [url]="'example.com/images/upload'"
+                      [buttonCaption]="'选择图片!'"
+                      [dropBoxMessage]="'拖拽图片到这里!'"
+                      (onFileUploadFinish)="imageUploaded($event)"
+                      (onRemove)="imageRemoved($event)"
+                      (isPending)="disableSendButton($event)"></image-upload>
+      </mat-tab>
+      <mat-tab label="网络图片">
+        <div style="margin-top: 20px">
+          <button class="btn btn-info center" style="float: left;width: 25%;text-align: center;vertical-align:bottom" >确定</button>
+          <input id="imageURL" type="text" class="validate flow-text" style="float: left;width: 70%;padding-left: 10px;vertical-align:bottom" placeholder="http://....">
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-dialog-content>
+</div>

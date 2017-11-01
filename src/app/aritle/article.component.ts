@@ -4,7 +4,8 @@ import {
 } from '@angular/core';
 import {TipInfo} from './article.tip';
 import {stringDistance} from "codelyzer/util/utils";
-import {MatDialog} from "@angular/material";
+import {MatDialog, MatDialogRef} from "@angular/material";
+import {config, IFrameDialog} from "./alter.dialog";
 
 declare var jQuery: any;
 declare let ace: any;
@@ -15,7 +16,9 @@ declare let ace: any;
   styleUrls: ['./article.component.css'],
 })
 export class ArticleComponent implements OnInit, AfterContentChecked {
-
+  lastAfterClosedResult: string;
+  lastBeforeCloseResult: string;
+  dialogRef: MatDialogRef<IFrameDialog> | null;
   editor: any;
   @Output()
   content: string;
@@ -35,7 +38,9 @@ export class ArticleComponent implements OnInit, AfterContentChecked {
   constructor(private render: Renderer2, private el: ElementRef, private dialog: MatDialog) {
 
   }
-
+  onClick(){
+    this.openImageDialog();
+  }
   ngOnInit(): void {
     this.tip = new TipInfo();
     let editorElement = this.getLeftPreNativeElement().children[0];
@@ -118,46 +123,6 @@ export class ArticleComponent implements OnInit, AfterContentChecked {
 
   keyUp(event: any) {
     console.log(event);
-  }
-
-  onClick() {
-    // this.content = this.getLeftPreNativeElement().children[0].innerText = this.removeLastN(this.getLeftPreNativeElement().children[0].innerText) + 'dd';
-    // this.setCursorContent(this.cursorPosition, '真实才');
-
-  }
-
-
-  /**
-   * 移除最后的换行符
-   * @param {string} value
-   * @returns {string}
-   */
-  private removeLastN(value: string): string {
-    const array = value.match('\n$');
-    if (array && array.length > 0) {
-
-      return value.substring(0, value.length - 1);
-    }
-    return value;
-  }
-
-  /**
-   * 用于拼接字符串
-   * @param {string} innerText
-   * @param {string} value
-   * @param {number} index
-   */
-  private append(innerText: string, value: string, index: number) {
-    const text = this.removeLastN(innerText);
-    const content = text.substring(0, index - 1) + value + text.substring(index);
-    return content;
-  }
-
-  /**
-   * 获取插入的位置
-   */
-  private getIndex() {
-
   }
 
   divClick() {
@@ -244,30 +209,11 @@ export class ArticleComponent implements OnInit, AfterContentChecked {
     console.log(range);
     console.log(range.start.column);
     console.log(this.editor);
-    this.editor.focus();
+    // this.editor.focus();
     console.log(this.cursorPosition);
-    this.dialog.open(IFrameDialog,{
-      height: '400px',
-      width: '600px',
-    });
   }
-}
-@Component({
-  selector: 'demo-iframe-dialog',
-  styles: [
-    `iframe {
-      width: 800px;
-    }`
-  ],
-  template: `
-    <h2 mat-dialog-title>Delete all</h2>
-    <mat-dialog-content>Are you sure?</mat-dialog-content>
-    <mat-dialog-actions>
-      <button mat-button mat-dialog-close>No</button>
-      <!-- Can optionally provide a result for the closing dialog. -->
-      <button mat-button [mat-dialog-close]="true">Yes</button>
-    </mat-dialog-actions>
-  `
-})
-export class IFrameDialog {
+
+  private openImageDialog() {
+     this.dialog.open(IFrameDialog);
+  }
 }
