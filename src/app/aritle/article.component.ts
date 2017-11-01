@@ -2,10 +2,11 @@ import {
   AfterContentChecked, AfterViewChecked, AfterViewInit, Component, ElementRef, OnChanges, OnInit, Output, Renderer2,
   SimpleChanges, TemplateRef, ViewChild
 } from '@angular/core';
-import {TipInfo} from './article.tip';
+import {MoreField, TipInfo} from './article.tip';
 import {stringDistance} from "codelyzer/util/utils";
 import {MatDialog, MatDialogRef} from "@angular/material";
-import {config, IFrameDialog} from "./alter.dialog";
+import {config, IFrameDialog} from "./image.dialog";
+import {SubmitDialog} from "./submit.dialog";
 
 declare var jQuery: any;
 declare let ace: any;
@@ -28,6 +29,7 @@ export class ArticleComponent implements OnInit, AfterContentChecked {
   private leftPre: any;
   private preFlag: boolean;
   private cursorPosition: number;
+  moreFeild: MoreField;
 
   /* @ViewChild('#help') 这个表示在需找<p #help></p> 这种标签 el.nativeElement表示html中原始标签
    el: ElementRef;*/
@@ -35,13 +37,22 @@ export class ArticleComponent implements OnInit, AfterContentChecked {
 
   }
 
+  moreClick(name: string) {
+    if (name === this.moreFeild.submit) {
+      this.dialog.open(SubmitDialog);
+    }
+  }
+
   constructor(private render: Renderer2, private el: ElementRef, private dialog: MatDialog) {
 
   }
-  onClick(){
+
+  onClick() {
     this.openImageDialog();
   }
+
   ngOnInit(): void {
+    this.moreFeild= new MoreField();
     this.tip = new TipInfo();
     let editorElement = this.getLeftPreNativeElement().children[0];
     this.editor = ace.edit(editorElement);
@@ -65,7 +76,7 @@ export class ArticleComponent implements OnInit, AfterContentChecked {
 
     this.lastColor = queryElement.style.color;
     this.render.setStyle(queryElement, 'color', 'red');
-    // console.log(queryElement.style.color);
+    console.log(this.lastColor);
   }
 
   /**
@@ -73,9 +84,8 @@ export class ArticleComponent implements OnInit, AfterContentChecked {
    * @param {string} id
    */
   mouseLeave(id: string) {
-    //  console.log(id);
     const queryElement = this.el.nativeElement.querySelector('#' + id);
-    this.render.setStyle(queryElement, 'color', this.lastColor);
+    this.render.setStyle(queryElement, 'color', null);
   }
 
   /**
@@ -214,6 +224,6 @@ export class ArticleComponent implements OnInit, AfterContentChecked {
   }
 
   private openImageDialog() {
-     this.dialog.open(IFrameDialog);
+    this.dialog.open(IFrameDialog);
   }
 }

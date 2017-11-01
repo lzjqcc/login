@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {MatDialog} from "@angular/material";
-import {IFrameDialog} from "../aritle/alter.dialog";
+import {IFrameDialog} from "../aritle/image.dialog";
 
 @Component({
   selector: 'dialog',

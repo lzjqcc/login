@@ -6,4 +6,11 @@ export class TipInfo {
   help = 'markdown语法帮助';
 }
 
+export class MoreField {
+  submit = 'submit';
+   save = 'save';
+   nouse = 'nouse';
+
+}
+
 

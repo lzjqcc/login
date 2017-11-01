@@ -28,7 +28,7 @@ export  const config = {
       width: 800px;
     }`
   ],
-  templateUrl: 'alter.dialog.html'
+  templateUrl: 'image.dialog.html'
 })
 export class IFrameDialog {
   imageUploaded(event: any){

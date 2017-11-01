@@ -1,0 +1,24 @@
+<div>
+  <mat-dialog-content>
+    <mat-form-field>
+      <mat-select placeholder="分类：">
+        <mat-option *ngFor="let state of states" [value]="state.code">{{ state.name }}</mat-option>
+      </mat-select>
+
+    </mat-form-field>
+
+<!--    <mat-form-field>
+      <mat-chip-list #chipList>
+        <mat-chip>Chip 1<mat-chip>
+          <mat-chip>Chip 2<mat-chip>
+      </mat-chip-list>
+      <input matChipInputFor="chipList">
+    </mat-form-field>-->
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <!-- Can optionally provide a result for the closing dialog. -->
+    <button mat-button [mat-dialog-close]="true">确定</button>
+  </mat-dialog-actions>
+</div>
+<!--标签-->

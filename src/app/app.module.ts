@@ -13,12 +13,18 @@ import {UnlessDirective} from './directive/img.directive';
 import {MarkdownEditorComponent} from "./md-editor/md-editor.component";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {MatButtonModule, MatDialogModule, MatDialogRef, MatInputModule, MatTabsModule} from "@angular/material";
+import {
+  MatButtonModule, MatDialogModule, MatDialogRef, MatInputModule, MatSelectModule,
+  MatTabsModule,
+  MatChipsModule,
+} from "@angular/material";
 import {FullscreenOverlayContainer, OverlayContainer} from "@angular/cdk/overlay";
-import {IFrameDialog} from "./aritle/alter.dialog";
+import {IFrameDialog} from "./aritle/image.dialog";
 import {TestCompontent} from "./test/test.compontent";
 import {MarkdownToHtmlModule} from "ng2-markdown-to-html";
 import {ImageUploadModule} from "angular2-image-upload";
+import {SubmitDialog} from "./aritle/submit.dialog";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +34,8 @@ import {ImageUploadModule} from "angular2-image-upload";
     ArticleComponent,
     MarkdownEditorComponent,
     IFrameDialog,
-    TestCompontent
+    TestCompontent,
+    SubmitDialog
   ],
   imports: [
     BrowserModule,
@@ -43,10 +50,13 @@ import {ImageUploadModule} from "angular2-image-upload";
     MatDialogModule,
     MatTabsModule,
     BrowserAnimationsModule,
-    ImageUploadModule.forRoot()
+    ImageUploadModule.forRoot(),
+    MatSelectModule,
+    MatChipsModule
   ],
   entryComponents: [
-    IFrameDialog
+    IFrameDialog,
+    SubmitDialog
   ],
   providers: [UserService],
   bootstrap: [AppComponent]
