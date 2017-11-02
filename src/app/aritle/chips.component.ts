@@ -5,11 +5,10 @@ export interface Person {
   name: string;
 }
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'chips',
+  templateUrl: './chips.component.html',
 })
-export class AppComponent {
+export class ChipsComponent {
   title = 'app';
   visible: boolean = true;
   selectable: boolean = true;

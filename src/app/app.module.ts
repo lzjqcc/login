@@ -16,7 +16,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {
   MatButtonModule, MatDialogModule, MatDialogRef, MatInputModule, MatSelectModule,
   MatTabsModule,
-  MatChipsModule,
+  MatChipsModule, MatIconModule, MAT_PLACEHOLDER_GLOBAL_OPTIONS,
 } from "@angular/material";
 import {FullscreenOverlayContainer, OverlayContainer} from "@angular/cdk/overlay";
 import {IFrameDialog} from "./aritle/image.dialog";
@@ -24,6 +24,7 @@ import {TestCompontent} from "./test/test.compontent";
 import {MarkdownToHtmlModule} from "ng2-markdown-to-html";
 import {ImageUploadModule} from "angular2-image-upload";
 import {SubmitDialog} from "./aritle/submit.dialog";
+import {ChipsComponent} from "./aritle/chips.component";
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import {SubmitDialog} from "./aritle/submit.dialog";
     MarkdownEditorComponent,
     IFrameDialog,
     TestCompontent,
-    SubmitDialog
+    SubmitDialog,
+    ChipsComponent
   ],
   imports: [
     BrowserModule,
@@ -52,13 +54,14 @@ import {SubmitDialog} from "./aritle/submit.dialog";
     BrowserAnimationsModule,
     ImageUploadModule.forRoot(),
     MatSelectModule,
-    MatChipsModule
+    MatChipsModule, /*标签*/
+    MatIconModule, /*图片*/
   ],
   entryComponents: [
     IFrameDialog,
     SubmitDialog
   ],
-  providers: [UserService],
+  providers: [UserService, {provide: MAT_PLACEHOLDER_GLOBAL_OPTIONS, useValue: {float: 'AUTO'}}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

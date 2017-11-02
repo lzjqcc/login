@@ -3,7 +3,6 @@
     <mat-tab-group>
       <mat-tab label="本地图片">
         <image-upload [max]="100"
-                      [url]="'example.com/images/upload'"
                       [buttonCaption]="'选择图片!'"
                       [dropBoxMessage]="'拖拽图片到这里!'"
                       (onFileUploadFinish)="imageUploaded($event)"

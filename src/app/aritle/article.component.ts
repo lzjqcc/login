@@ -39,7 +39,10 @@ export class ArticleComponent implements OnInit, AfterContentChecked {
 
   moreClick(name: string) {
     if (name === this.moreFeild.submit) {
-      this.dialog.open(SubmitDialog);
+      this.dialog.open(SubmitDialog,{
+        width: '40%',
+        height: '35%',
+      });
     }
   }
 
@@ -73,8 +76,6 @@ export class ArticleComponent implements OnInit, AfterContentChecked {
     // console.log(this.el);
     // 根el 表示一个 <app-article><app-article>
     const queryElement = this.el.nativeElement.querySelector('#' + id);
-
-    this.lastColor = queryElement.style.color;
     this.render.setStyle(queryElement, 'color', 'red');
     console.log(this.lastColor);
   }
