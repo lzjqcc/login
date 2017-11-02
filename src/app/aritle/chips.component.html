@@ -1,5 +1,5 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="">
+<div matTooltip="标签：" [matTooltipPosition]="'left'">
   <mat-form-field class="demo-chip-list" style="width: auto">
     <mat-chip-list #chipList>
       <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable"
@@ -12,7 +12,6 @@
         [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
         [matChipInputAddOnBlur]="addOnBlur"
         (matChipInputTokenEnd)="add($event)" class="#ffffff white" style="border-color: transparent;width: auto" (click)="onClick($event)" />
-
     </mat-chip-list>
   </mat-form-field>
 </div>

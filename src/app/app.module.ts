@@ -16,7 +16,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {
   MatButtonModule, MatDialogModule, MatDialogRef, MatInputModule, MatSelectModule,
   MatTabsModule,
-  MatChipsModule, MatIconModule, MAT_PLACEHOLDER_GLOBAL_OPTIONS,
+  MatChipsModule, MatIconModule, MAT_PLACEHOLDER_GLOBAL_OPTIONS, MatTooltipModule,
 } from "@angular/material";
 import {FullscreenOverlayContainer, OverlayContainer} from "@angular/cdk/overlay";
 import {IFrameDialog} from "./aritle/image.dialog";
@@ -56,6 +56,7 @@ import {ChipsComponent} from "./aritle/chips.component";
     MatSelectModule,
     MatChipsModule, /*标签*/
     MatIconModule, /*图片*/
+    MatTooltipModule
   ],
   entryComponents: [
     IFrameDialog,
