@@ -6,13 +6,15 @@ import {SuccessComponent} from "../success/success.component";
 import {ArticleComponent} from "../aritle/article.component";
 import {MarkdownEditorComponent} from "../md-editor/md-editor.component";
 import {TestCompontent} from "../test/test.compontent";
+import {ShowarticleComponent} from "../showarticle/showarticle.component";
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'article', component: ArticleComponent},
   {path: 'success', component: SuccessComponent},
   {path: 'md', component: MarkdownEditorComponent},
-  {path: 'test', component: TestCompontent}
+  {path: 'test', component: TestCompontent},
+  {path: 'showarticle/:id', component: ShowarticleComponent}
 ];
 
 @NgModule({

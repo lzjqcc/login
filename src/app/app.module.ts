@@ -16,7 +16,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {
   MatButtonModule, MatDialogModule, MatDialogRef, MatInputModule, MatSelectModule,
   MatTabsModule,
-  MatChipsModule, MatIconModule, MAT_PLACEHOLDER_GLOBAL_OPTIONS, MatTooltipModule,
+  MatChipsModule, MatIconModule, MAT_PLACEHOLDER_GLOBAL_OPTIONS, MatTooltipModule, MatGridListModule,
 } from "@angular/material";
 import {FullscreenOverlayContainer, OverlayContainer} from "@angular/cdk/overlay";
 import {IFrameDialog} from "./aritle/image.dialog";
@@ -25,6 +25,7 @@ import {MarkdownToHtmlModule} from "ng2-markdown-to-html";
 import {ImageUploadModule} from "angular2-image-upload";
 import {SubmitDialog} from "./aritle/submit.dialog";
 import {ChipsComponent} from "./aritle/chips.component";
+import {ShowarticleComponent} from "./showarticle/showarticle.component";
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import {ChipsComponent} from "./aritle/chips.component";
     IFrameDialog,
     TestCompontent,
     SubmitDialog,
-    ChipsComponent
+    ChipsComponent,
+    ShowarticleComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +58,8 @@ import {ChipsComponent} from "./aritle/chips.component";
     MatSelectModule,
     MatChipsModule, /*标签*/
     MatIconModule, /*图片*/
-    MatTooltipModule
+    MatTooltipModule,
+    MatGridListModule
   ],
   entryComponents: [
     IFrameDialog,
