@@ -1,9 +1,29 @@
-<mat-grid-list cols="4" rowHeight="100px">
-  <mat-grid-tile
-    *ngFor="let tile of tiles"
-    [colspan]="tile.cols"
-    [rowspan]="tile.rows"
-    [style.background]="tile.color">
-    {{tile.text}}
-  </mat-grid-tile>
-</mat-grid-list>
+<div style="width: 100%;margin-top: 5%">
+  <!--显示文章集合-->
+  <div style="position: fixed;left: 3%">
+    <div>
+      <ul>
+        <li>li</li>
+        <li></li>
+      </ul>
+    </div>
+    <div>
+      <ul>
+
+      </ul>
+    </div>
+  </div>
+  <!--中间显示文章-->
+  <div class="z-depth-1" style="margin-left: 10%;width: 75%;word-wrap: break-word; word-break: break-all ;white-space: pre-wrap;padding-left: 2%;padding-right: 2%">
+    <div markdown-to-html [data]="tiles"></div>
+  </div>
+  <!--显示文章的导航栏-->
+  <div style="width: 10%;right: 2%;background: red;position: fixed;top: 15%">
+    <div class="collection">
+      <a href="#!" class="collection-item"><span style="font-weight:bold;font-size: medium">Alvin</span></a>
+      <a href="#!" class="collection-item"><span>Alvin</span></a>
+      <a href="#!" class="collection-item">Alvin</a>
+      <a href="#!" class="collection-item">Alvin</a>
+    </div>
+  </div>
+</div>

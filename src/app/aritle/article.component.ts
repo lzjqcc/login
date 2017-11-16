@@ -55,7 +55,7 @@ export class ArticleComponent implements OnInit, AfterContentChecked {
   }
 
   ngOnInit(): void {
-    this.moreFeild= new MoreField();
+    this.moreFeild = new MoreField();
     this.tip = new TipInfo();
     let editorElement = this.getLeftPreNativeElement().children[0];
     this.editor = ace.edit(editorElement);

@@ -7,7 +7,7 @@ import {SuccessComponent} from './success/success.component';
 import {UserService} from './login/login.service';
 import {HttpModule} from "@angular/http";
 import {FormsModule} from "@angular/forms";
-import {MarkdownModule} from "angular2-markdown";
+
 import {ArticleComponent} from "./aritle/article.component";
 import {UnlessDirective} from './directive/img.directive';
 import {MarkdownEditorComponent} from "./md-editor/md-editor.component";
@@ -46,7 +46,6 @@ import {ShowarticleComponent} from "./showarticle/showarticle.component";
     RouteModule,
     HttpModule,
     FormsModule,
-    MarkdownModule.forRoot(),
     NgbModule.forRoot(),
     MarkdownToHtmlModule.forRoot(),
     MatInputModule,
