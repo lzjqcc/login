@@ -21,6 +21,7 @@ export class ArticleComponent implements OnInit, AfterContentChecked {
   lastBeforeCloseResult: string;
   dialogRef: MatDialogRef<IFrameDialog> | null;
   editor: any;
+  title: string;
   @Output()
   content: string;
   private lastColor: string;
@@ -41,7 +42,8 @@ export class ArticleComponent implements OnInit, AfterContentChecked {
     if (name === this.moreFeild.submit) {
       this.dialog.open(SubmitDialog,{
         width: '40%',
-        height: '35%',
+        height: '50%',
+        data: {title: this.title, content: this.content}
       });
     }
   }
@@ -77,7 +79,6 @@ export class ArticleComponent implements OnInit, AfterContentChecked {
     // 根el 表示一个 <app-article><app-article>
     const queryElement = this.el.nativeElement.querySelector('#' + id);
     this.render.setStyle(queryElement, 'color', 'red');
-    console.log(this.lastColor);
   }
 
   /**

@@ -1,6 +1,12 @@
 import {Component} from '@angular/core';
 import {UserService} from './login.service';
 import {User} from './user';
+import {RouteHttp} from "../route/route.http";
+import {
+  CanActivate, Router,
+  ActivatedRouteSnapshot,
+  RouterStateSnapshot
+} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,15 +16,21 @@ import {User} from './user';
 export class LoginComponent {
   message: string;
   user: User = {
-    username: 'dd',
+    nameOrEmail: 'dd',
     password: '123'
   };
   username: string;
 
-  constructor( private userService: UserService) {
+  constructor( private http: RouteHttp,private  router: Router) {
   }
 
   doLogin(): void {
-   this.userService.doLogin(this.user);
+   this.http.doPost(this.user, '/loginAct', true , 'currentUser').subscribe(data =>{
+     if (data.result === 'fail'){
+       this.router.navigateByUrl('/login');
+     } else {
+       this.router.navigateByUrl('/success');
+     }
+   });
   }
 }

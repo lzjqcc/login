@@ -1,29 +1,41 @@
-<div style="width: 100%;margin-top: 5%">
+<div style="width: 100%;margin-top: 10%">
   <!--显示文章集合-->
-  <div style="position: fixed;left: 3%">
-    <div>
+  <div style="width:auto;margin-right: 1%;width: 10%;margin-top: 10%;clear: both">
+    <div class="card-panel hoverable">
+      <span>归档</span>
       <ul>
-        <li>li</li>
-        <li></li>
+        <li><a href="#" class="pulse">人生如梦</a></li>
+        <li>ddd</li>
+        <li>lskd</li>
+        <li>skld</li>
       </ul>
     </div>
-    <div>
+    <div class="card-panel hoverable">
+      <span>日期</span>
       <ul>
-
+        <li><a href="#" class="pulse">人生如梦</a></li>
+        <li>ddd</li>
+        <li>lskd</li>
+        <li>skld</li>
       </ul>
     </div>
   </div>
+
   <!--中间显示文章-->
-  <div class="z-depth-1" style="margin-left: 10%;width: 75%;word-wrap: break-word; word-break: break-all ;white-space: pre-wrap;padding-left: 2%;padding-right: 2%">
-    <div markdown-to-html [data]="tiles"></div>
+  <div class="z-depth-1" style="top: 15%;margin-left: 12%;width: 75%;word-wrap: break-word; word-break: break-all ;white-space: pre-wrap;padding-left: 2%;padding-right: 2%;clear: both;position: absolute">
+    <div class="flow-text" markdown-to-html [data]="tiles"></div>
   </div>
   <!--显示文章的导航栏-->
-  <div style="width: 10%;right: 2%;background: red;position: fixed;top: 15%">
-    <div class="collection">
+  <div class="" style="width: 10%;right: 2%;position: fixed;top: 15%">
+    <div class="collection card-panel hoverable">
       <a href="#!" class="collection-item"><span style="font-weight:bold;font-size: medium">Alvin</span></a>
       <a href="#!" class="collection-item"><span>Alvin</span></a>
       <a href="#!" class="collection-item">Alvin</a>
       <a href="#!" class="collection-item">Alvin</a>
     </div>
   </div>
+</div>
+<div style="width: 70%;position: absolute;left: 15%">
+
+  <show-comment></show-comment>
 </div>

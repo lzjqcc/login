@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component ,Output,Input} from '@angular/core';
 import {ENTER} from "@angular/cdk/keycodes";
 import {MatChipInputEvent} from "@angular/material";
 export interface Person {
@@ -17,7 +17,7 @@ export class ChipsComponent {
 
   // Enter, comma
   separatorKeysCodes = [ENTER];
-
+  @Output()@Input()
   fruits = [
     { name: 'Lemon' },
     { name: 'Lime' },

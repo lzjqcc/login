@@ -26,6 +26,8 @@ import {ImageUploadModule} from "angular2-image-upload";
 import {SubmitDialog} from "./aritle/submit.dialog";
 import {ChipsComponent} from "./aritle/chips.component";
 import {ShowarticleComponent} from "./showarticle/showarticle.component";
+import {ShowcommentComponent} from "./comment/showcomment.component";
+import {RouteHttp} from "./route/route.http";
 
 @NgModule({
   declarations: [
@@ -39,7 +41,8 @@ import {ShowarticleComponent} from "./showarticle/showarticle.component";
     TestCompontent,
     SubmitDialog,
     ChipsComponent,
-    ShowarticleComponent
+    ShowarticleComponent,
+    ShowcommentComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +67,7 @@ import {ShowarticleComponent} from "./showarticle/showarticle.component";
     IFrameDialog,
     SubmitDialog
   ],
-  providers: [UserService, {provide: MAT_PLACEHOLDER_GLOBAL_OPTIONS, useValue: {float: 'AUTO'}}],
+  providers: [UserService,RouteHttp, {provide: MAT_PLACEHOLDER_GLOBAL_OPTIONS, useValue: {float: 'AUTO'}}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
