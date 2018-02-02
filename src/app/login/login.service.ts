@@ -15,16 +15,17 @@ export class UserService {
 
 // application/x-www-form-urlencoded
   doLogin(user: User) {
-    const body = {nameOrEmail: user.nameOrEmail, password: user.password};
-    // 'nameOrEmail=bar&password=moe' 使用与@RequestParam
-    // {headers: new Headers({'Content-type': 'application/x-www-form-urlencoded'})}
-    return this.http.post(baseURL + 'login', body ).map((response: Response) => {
+    const body = {email: user.email, password: user.password};
+    // 'email=bar&password=moe' 使用与@RequestParam
+
+    return this.http.post(baseURL + 'loginAct', body, {headers: new Headers({'Content-type': 'application/json'})} ).map((response: Response) => {
       // login successful if there's a jwt token in the response
       let user = response.json();
       if (user && user.token) {
         localStorage.setItem('currentUser', JSON.stringify(user));
       }
 
+      console.log(user);
       return user;
     });
   }
