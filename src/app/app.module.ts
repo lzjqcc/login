@@ -15,21 +15,19 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {
   MatButtonModule, MatDialogModule, MatDialogRef, MatInputModule, MatSelectModule,
-  MatTabsModule,
-  MatChipsModule, MatIconModule, MAT_PLACEHOLDER_GLOBAL_OPTIONS, MatTooltipModule, MatGridListModule,
-} from "@angular/material";
-import {FullscreenOverlayContainer, OverlayContainer} from "@angular/cdk/overlay";
-import {IFrameDialog} from "./aritle/image.dialog";
+  MatTabsModule, MatIconModule, MAT_PLACEHOLDER_GLOBAL_OPTIONS, MatTooltipModule, MatGridListModule,
+MatRadioModule } from "@angular/material";
+import {ImageDialog} from "./aritle/image.dialog";
 import {TestCompontent} from "./test/test.compontent";
 import {MarkdownToHtmlModule} from "ng2-markdown-to-html";
 import {ImageUploadModule} from "angular2-image-upload";
 import {SubmitDialog} from "./aritle/submit.dialog";
-import {ChipsComponent} from "./aritle/chips.component";
 import {ShowarticleComponent} from "./showarticle/showarticle.component";
 import {ShowcommentComponent} from "./comment/showcomment.component";
 import {RouteHttp} from "./route/route.http";
 import {WebSocketService} from "./websocket/WebSocketService";
-
+import {ArticleSertice} from "./aritle/article.sertice";
+import { StompService } from 'ng2-stomp-service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,10 +36,9 @@ import {WebSocketService} from "./websocket/WebSocketService";
     UnlessDirective,
     ArticleComponent,
     MarkdownEditorComponent,
-    IFrameDialog,
+    ImageDialog,
     TestCompontent,
     SubmitDialog,
-    ChipsComponent,
     ShowarticleComponent,
     ShowcommentComponent
   ],
@@ -59,16 +56,16 @@ import {WebSocketService} from "./websocket/WebSocketService";
     BrowserAnimationsModule,
     ImageUploadModule.forRoot(),
     MatSelectModule,
-    MatChipsModule, /*标签*/
     MatIconModule, /*图片*/
     MatTooltipModule,
-    MatGridListModule
+    MatGridListModule,
+    MatRadioModule
   ],
   entryComponents: [
-    IFrameDialog,
+    ImageDialog,
     SubmitDialog
   ],
-  providers: [UserService, RouteHttp, WebSocketService ,  {provide: MAT_PLACEHOLDER_GLOBAL_OPTIONS, useValue: {float: 'AUTO'}}],
+  providers: [StompService, UserService, RouteHttp , WebSocketService, {provide: MAT_PLACEHOLDER_GLOBAL_OPTIONS, useValue: {float: 'AUTO'}}, ArticleSertice],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
