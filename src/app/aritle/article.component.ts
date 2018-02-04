@@ -112,7 +112,7 @@ export class ArticleComponent implements OnInit, AfterContentChecked {
    * pre 标签鼠标悬浮
    * @param {string} flag
    */
-  private preMouseOver(flag: string) {
+  public preMouseOver(flag: string) {
     if (flag === 'right') {
       this.preFlag = true;
     } else if (flag === 'left') {

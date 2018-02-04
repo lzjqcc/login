@@ -11,7 +11,6 @@ import {FormsModule} from "@angular/forms";
 import {ArticleComponent} from "./aritle/article.component";
 import {UnlessDirective} from './directive/img.directive';
 import {MarkdownEditorComponent} from "./md-editor/md-editor.component";
-import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {
   MatButtonModule, MatDialogModule, MatDialogRef, MatInputModule, MatSelectModule,
@@ -47,7 +46,6 @@ import { StompService } from 'ng2-stomp-service';
     RouteModule,
     HttpModule,
     FormsModule,
-    NgbModule.forRoot(),
     MarkdownToHtmlModule.forRoot(),
     MatInputModule,
     MatButtonModule,

@@ -12,7 +12,7 @@ export class SuccessComponent {
   constructor( private http: RouteHttp, private  router: Router, private ws : WebSocketService, private render: Renderer2, private el: ElementRef) {
     console.log( this.http.doGet(null, '/friend/get').subscribe(responce => {
       console.log(responce);
-      const ws = new WebSocketService();
+     // const ws = new WebSocketService();
       ws.receiveMsg();
     }) );
   }
