@@ -2,17 +2,23 @@
   <mat-dialog-content>
     <mat-tab-group>
       <mat-tab label="本地图片">
-        <image-upload [max]="100"
+        <image-upload [max]="1"
+                      [withCredentials]="true"
+                      [headers]="myHeaders"
                       [buttonCaption]="'选择图片!'"
                       [dropBoxMessage]="'拖拽图片到这里!'"
-                      (onFileUploadFinish)="imageUploaded($event)"
-                      (onRemove)="imageRemoved($event)"
-                      (isPending)="disableSendButton($event)"></image-upload>
+                      (removed)="onRemoved($event)"
+                      (uploadFinished)="onUploadFinished($event)"
+                      [url] = "'http://localhost:8080/image/uploadPicture'"
+                      >
+
+        </image-upload>
+        <!--[url] = "'http://localhost:8080/articles/uploadPic'"-->
       </mat-tab>
       <mat-tab label="网络图片">
         <div style="margin-top: 20px">
-          <button class="btn btn-info center" style="float: left;width: 25%;text-align: center;vertical-align:bottom" >确定</button>
-          <input id="imageURL" type="text" class="validate flow-text" style="float: left;width: 70%;padding-left: 10px;vertical-align:bottom" placeholder="http://....">
+          <button class="btn btn-info center" (click)="onClick('Image')" style="float: left;width: 25%;text-align: center;vertical-align:bottom" >确定</button>
+          <input id="imageURL" type="text" [(ngModel)]="imageURL" class="validate flow-text" style="float: left;width: 70%;padding-left: 10px;vertical-align:bottom" placeholder="http://....">
         </div>
       </mat-tab>
     </mat-tab-group>

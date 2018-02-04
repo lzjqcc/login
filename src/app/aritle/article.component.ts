@@ -5,8 +5,9 @@ import {
 import {MoreField, TipInfo} from './article.tip';
 import {stringDistance} from "codelyzer/util/utils";
 import {MatDialog, MatDialogRef} from "@angular/material";
-import {config, IFrameDialog} from "./image.dialog";
+import { ImageDialog} from "./image.dialog";
 import {SubmitDialog} from "./submit.dialog";
+import {ArticleSertice} from "./article.sertice";
 
 declare var jQuery: any;
 declare let ace: any;
@@ -19,7 +20,7 @@ declare let ace: any;
 export class ArticleComponent implements OnInit, AfterContentChecked {
   lastAfterClosedResult: string;
   lastBeforeCloseResult: string;
-  dialogRef: MatDialogRef<IFrameDialog> | null;
+  dialogRef: MatDialogRef<ImageDialog> | null;
   editor: any;
   title: string;
   @Output()
@@ -48,8 +49,7 @@ export class ArticleComponent implements OnInit, AfterContentChecked {
     }
   }
 
-  constructor(private render: Renderer2, private el: ElementRef, private dialog: MatDialog) {
-
+  constructor(private render: Renderer2, private el: ElementRef, private dialog: MatDialog , private articleService: ArticleSertice) {
   }
 
   onClick() {
@@ -68,8 +68,9 @@ export class ArticleComponent implements OnInit, AfterContentChecked {
       let val = this.editor.getValue();
       this.content = val;
     });
+    this.articleService.setEditor(this.editor);
+    this.articleService.setRightPre(this.getRightPreNativeElement());
   }
-
   /**
    * TipInfo 鼠标悬浮显示TipInfo中信息,并修改颜色
    * @param {string} id
@@ -166,66 +167,10 @@ export class ArticleComponent implements OnInit, AfterContentChecked {
   }
 
   insertContent(type: string) {
-    console.log(this.editor);
-    if (!this.editor) return;
-    let selectedText = this.editor.getSelectedText();
-    let isSeleted = !!selectedText;
-    let startSize = 2;
-    let initText: string = '';
-    let range = this.editor.selection.getRange();
-    switch (type) {
-      case 'Bold':
-        initText = 'Bold Text';
-        selectedText = `**${selectedText || initText}**`;
-        break;
-      case 'Italic':
-        initText = 'Italic Text';
-        selectedText = `*${selectedText || initText}*`;
-        startSize = 1;
-        break;
-      case 'Heading':
-        initText = 'Heading';
-        selectedText = `# ${selectedText || initText}`;
-        break;
-      case 'Refrence':
-        initText = 'Refrence';
-        selectedText = `> ${selectedText || initText}`;
-        break;
-      case 'Link':
-        selectedText = `[](http://)`;
-        startSize = 1;
-        break;
-      case 'Image':
-        selectedText = `![](http://)`;
-        break;
-      case 'Ul':
-        selectedText = `- ${selectedText || initText}`
-        break;
-      case 'Ol':
-        selectedText = `1. ${selectedText || initText}`
-        startSize = 3;
-        break;
-      case 'Code':
-        initText = 'Source Code';
-        selectedText = "```language\r\n" + (selectedText || initText) + "\r\n```";
-        startSize = 3;
-        break;
-    }
-    this.editor.session.replace(range, selectedText);
-
-    if (!isSeleted) {
-      range.start.column += startSize;
-      range.end.column = range.start.column + initText.length;
-      this.editor.selection.setRange(range);
-    }
-    console.log(range);
-    console.log(range.start.column);
-    console.log(this.editor);
-    // this.editor.focus();
-    console.log(this.cursorPosition);
+    this.articleService.insertContent(this.editor, type);
   }
 
   private openImageDialog() {
-    this.dialog.open(IFrameDialog);
+    this.dialog.open(ImageDialog);
   }
 }
