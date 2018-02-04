@@ -28,6 +28,7 @@ import {ChipsComponent} from "./aritle/chips.component";
 import {ShowarticleComponent} from "./showarticle/showarticle.component";
 import {ShowcommentComponent} from "./comment/showcomment.component";
 import {RouteHttp} from "./route/route.http";
+import {WebSocketService} from "./websocket/WebSocketService";
 
 @NgModule({
   declarations: [
@@ -67,7 +68,7 @@ import {RouteHttp} from "./route/route.http";
     IFrameDialog,
     SubmitDialog
   ],
-  providers: [UserService,RouteHttp, {provide: MAT_PLACEHOLDER_GLOBAL_OPTIONS, useValue: {float: 'AUTO'}}],
+  providers: [UserService, RouteHttp, WebSocketService ,  {provide: MAT_PLACEHOLDER_GLOBAL_OPTIONS, useValue: {float: 'AUTO'}}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -16,7 +16,7 @@ import {
 export class LoginComponent {
   message: string;
   user: User = {
-    nameOrEmail: 'dd',
+    email: 'dd',
     password: '123'
   };
   username: string;
@@ -25,7 +25,7 @@ export class LoginComponent {
   }
 
   doLogin(): void {
-   this.http.doPost(this.user, '/loginAct', true , 'currentUser').subscribe(data =>{
+   this.http.doPost(this.user, '/loginBlog', true , 'currentUser').subscribe(data =>{
      if (data.result === 'fail'){
        this.router.navigateByUrl('/login');
      } else {
