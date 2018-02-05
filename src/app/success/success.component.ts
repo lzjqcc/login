@@ -2,6 +2,7 @@ import {Component, ElementRef, Renderer2} from '@angular/core';
 import {Router} from "@angular/router";
 import {RouteHttp} from "../route/route.http";
 import {WebSocketService} from "../websocket/WebSocketService";
+import {Friend} from "../login/user";
 
 @Component({
   selector: 'app-root',
@@ -10,10 +11,18 @@ import {WebSocketService} from "../websocket/WebSocketService";
 export class SuccessComponent {
   title = 'app';
   constructor( private http: RouteHttp, private  router: Router, private ws : WebSocketService, private render: Renderer2, private el: ElementRef) {
-    console.log( this.http.doGet(null, '/friend/get').subscribe(responce => {
-      console.log(responce);
+    console.log( this.http.doGet(null, '/friend/findAllFriends').subscribe(responce => {
      // const ws = new WebSocketService();
-      ws.receiveMsg();
+      var friends = new Array<Friend>();
+      for (var a of responce.result) {
+        var friend = new Friend();
+        friend.currentAccountId = a.currentAccountId;
+        friend.friendName = a.friendName;
+        friend.id = a.id;
+        friend.friendId = a.friendId;
+        friends.push(friend);
+        ws.subscriptionFriendSignin(friends);
+      }
     }) );
   }
 

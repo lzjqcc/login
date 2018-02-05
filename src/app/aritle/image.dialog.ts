@@ -1,7 +1,8 @@
 import {Component, ElementRef, Renderer2} from "@angular/core";
 import {MatDialogConfig, MatDialogRef} from "@angular/material";
 import {ArticleSertice} from "./article.sertice";
-import {FileHolder} from "_angular2-image-upload@1.0.0-rc.0@angular2-image-upload";
+import {FileHolder} from "angular2-image-upload";
+
 
 const defaultDialogConfig = new MatDialogConfig();
 @Component({
