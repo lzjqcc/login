@@ -11,9 +11,9 @@ import {Friend} from "../login/user";
 export class SuccessComponent {
   title = 'app';
   constructor( private http: RouteHttp, private  router: Router, private ws : WebSocketService, private render: Renderer2, private el: ElementRef) {
-    console.log( this.http.doGet(null, '/friend/findAllFriends').subscribe(responce => {
+     this.http.doGet(null, '/friend/get').subscribe(responce => {
      // const ws = new WebSocketService();
-      var friends = new Array<Friend>();
+     /* var friends = new Array<Friend>();
       for (var a of responce.result) {
         var friend = new Friend();
         friend.currentAccountId = a.currentAccountId;
@@ -21,9 +21,9 @@ export class SuccessComponent {
         friend.id = a.id;
         friend.friendId = a.friendId;
         friends.push(friend);
-        ws.subscriptionFriendSignin(friends);
-      }
-    }) );
+      }*/
+       ws.subscriptionFriendSignin(responce.result.id);
+    });
   }
 
 }

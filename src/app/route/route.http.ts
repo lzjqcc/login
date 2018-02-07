@@ -29,7 +29,6 @@ export class RouteHttp {
     const body = this.connectParamsWithAnd(params);
     const headers = {headers: new Headers({'Content-type': 'application/x-www-form-urlencoded'}), params: body, withCredentials : true};
     return this.http.get(baseURL + url,  headers).map((response: Response) => {
-      console.log(response);
       return response.json();
     });
   }
