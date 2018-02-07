@@ -44,22 +44,29 @@ export class WebSocketService {
    * 订阅用户登出
    * @param {number} currentid
    */
-  subscriptionFriendSignout(currentid: number): void {
+  subscriptionFriendSignout(currentid: number, callback: any): void {
     this.stomp.after('init').then(()=>{
-      this.stomp.subscribe('/topic/friend/signout/' + currentid, (data)=>{
-        console.log(data);
-      });
+      this.stomp.subscribe('/topic/friend/signout/' + currentid, callback);
     });
   }
 
   /**
    * 订阅系统信息
    */
-  subscriptionSystem(): void {
+  subscriptionSystem(callback: any): void {
     this.stomp.after('init').then(()=>{
-      this.stomp.subscribe('/topic/systemInfo' ,(data)=>{
-        console.log(data);
-      });
+      this.stomp.subscribe('/topic/systemInfo' , callback);
+    });
+  }
+
+  /**
+   * 订阅用户评论
+   * @param {number} currentId
+   * @param callback
+   */
+  suscriptionAccountCommit(currentId: number, callback: any): void {
+    this.stomp.after('init').then(()=>{
+      this.stomp.subscribe('/topic/commit/' + currentId , callback);
     });
   }
   receiveMsg(): void {
