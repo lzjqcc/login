@@ -4,58 +4,68 @@
 <!--自动换行关键：word-wrap: break-word; word-break: break-all ;white-space: pre-wrap;-->
 <!--insert_link-->
 <!--<button (click)="this.onClick()" class="btn btn-info">button</button>-->
-  <div class="input-field col s6 " style="margin-left: 25%;width: 50%;">
-    <input id="first_name2" type="text" class="validate flow-text center"  [(ngModel)]="title" style="font-size: 2em">
-    <label class="active " for="first_name2">文章标题</label>
+<div class="container">
+
+  <div class="row" style="margin-left: 25%;width: 50%;margin-top: 5%">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="first_name2">文章标题</label>
+        <div class="col-sm-10">
+          <input id="first_name2" type="text" class="form-control" [(ngModel)]="title"
+                 style="outline-: none;border-left: 0;border-right: 0;border-top: 0;">
+        </div>
+      </div>
+    </div>
   </div>
 
-<div class="fixed-action-btn  horizontal  click-to-toggle">
-  <a class="btn-floating btn-large red">
-    <i class="material-icons">更多</i>
-  </a>
-  <ul>
-    <li id="submit" (mouseover)="mouseOver('submit')" (mouseleave)="mouseLeave('submit')" (click)="moreClick('submit')"><a class="btn-floating center">提交文章</a></li>
-    <li id="nouse"  (mouseover)="mouseOver('nouse')" (mouseleave)="mouseLeave('nouse')"><a class="btn-floating yellow darken-1 center">舍弃</a></li>
-    <li id="save"  (mouseover)="mouseOver('save')" (mouseleave)="mouseLeave('save')"><a class="btn-floating green center">存稿</a></li>
-    <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
-  </ul>
-</div>
-<!-- Navbar content -->
-<nav class="navbar-light bg-primary" style="width: 50%;margin: 0 auto">
+
   <!-- Navbar content -->
-  <!--data-position="bottom" data-delay="50" data-tooltip="I am a tooltip"-->
-  <ul>
-    <li id="link" (mouseover)="mouseOver('link')" (mouseleave)="mouseLeave('link')" (click)="insertContent('Link')"
-        [title]="tip.link"><i
-      class="large material-icons">insert_link</i></li>
-    <li id="pic" (mouseover)="mouseOver('pic')" (mouseleave)="mouseLeave('pic')" [title]="tip.pic"
-        (click)="onClick()"><i
-      class="medium material-icons">image</i></li>
-    <li id="code" (mouseover)="mouseOver('code')" (mouseleave)="mouseLeave('code')" [title]="tip.code"
-        (click)="insertContent('Code')"><i
-      class="medium material-icons ">code</i></li>
-    <li id="local" (mouseover)="mouseOver('local')" (mouseleave)="mouseLeave('local')" [title]="tip.local"><i
-      class="medium material-icons ">file_upload</i></li>
-    <li id="help" (mouseover)="mouseOver('help')" (mouseleave)="mouseLeave('help')" [title]="tip.help"
-        data-position="bottom" data-delay="50" data-tooltip="I am a tooltip"><i class="large material-icons ">help</i>
-    </li>
-  </ul>
+  <nav class="" style="width: 50%;margin: 0 auto">
+    <!-- Navbar content -->
+    <!--data-position="bottom" data-delay="50" data-tooltip="I am a tooltip"-->
+    <ul class="list-unstyled  nav-stacked">
+      <li id="link" (mouseover)="mouseOver('link')" (mouseleave)="mouseLeave('link')" (click)="insertContent('Link')"
+          [title]="tip.link"><i
+        class="large material-icons">insert_link</i></li>
+      <li id="pic" (mouseover)="mouseOver('pic')" (mouseleave)="mouseLeave('pic')" [title]="tip.pic"
+          (click)="onClick()"><i
+        class="medium material-icons">image</i></li>
+      <li id="code" (mouseover)="mouseOver('code')" (mouseleave)="mouseLeave('code')" [title]="tip.code"
+          (click)="insertContent('Code')"><i
+        class="medium material-icons ">code</i></li>
+      <li id="local" (mouseover)="mouseOver('local')" (mouseleave)="mouseLeave('local')" [title]="tip.local"><i
+        class="medium material-icons ">file_upload</i></li>
+      <li id="help" (mouseover)="mouseOver('help')" (mouseleave)="mouseLeave('help')" [title]="tip.help"
+          data-position="bottom" data-delay="50" data-tooltip="I am a tooltip"><i class="large material-icons ">help</i>
+      </li>
+    </ul>
 
-</nav>
+  </nav>
 
-<div style=" width: 95%;margin:10px auto">
+  <div style=" width: 95%;margin:10px auto">
   <pre style="margin: 0 auto;" class="form-control font-rich pre col s12 m2 z-depth-5 card-panel"
        (mouseover)="preMouseOver('left')" (scroll)="scroll('left')" id="leftPre">
-  <div id="div"  contenteditable="true" class="mardowndiv" aria-placeholder="输入。。。"></div>
+  <div id="div" contenteditable="true" class="mardowndiv" aria-placeholder="输入。。。"></div>
 </pre>
-  <pre style="margin: 0 auto;" class="form-control font-rich pre col s12 m2 z-depth-5 card-panel"
-       (mouseover)="preMouseOver('right')" id="rightPre" (scroll)="scroll('right')">
+    <pre style="margin: 0 auto;" class="col-sm-10 font-rich pre col s12 m2 z-depth-5 card-panel"
+         (mouseover)="preMouseOver('right')" id="rightPre" (scroll)="scroll('right')">
     <div id="markdown" class="mardowndiv">
       <div markdown-to-html [data]="content"></div>
     </div>
   </pre>
+  </div>
+  <div class="row">
+    <ul class="list-unstyled nav-stacked navbar-fixed-bottom col-md-1"
+        style="width: 100px;margin-left: 92%;padding: 5px">
+      <li id="submit" (mouseover)="mouseOver('submit')" (mouseleave)="mouseLeave('submit')"
+          (click)="moreClick('submit')" class="btn btn-primary">提交
+      </li>
+      <li id="nouse" (mouseover)="mouseOver('nouse')" (mouseleave)="mouseLeave('nouse')" class="btn  btn-primary">舍弃
+      </li>
+      <li id="save" (mouseover)="mouseOver('save')" (mouseleave)="mouseLeave('save')" class="btn  btn-primary">存稿</li>
+    </ul>
+  </div>
 </div>
-
 <!--  撒旦法斯蒂芬斯蒂芬李师傅介绍了开发建设浪费岁的克劳福德死了萨拉东风科技类似的看风景的斯洛伐克受到法律独守空房类似的看风景克里斯多夫斯蒂芬森-->
 <!--
 outline:0;-->
