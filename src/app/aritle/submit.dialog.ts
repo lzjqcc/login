@@ -1,6 +1,13 @@
 import {Component, Input, Inject, OnInit, AfterViewInit, ElementRef, Renderer2} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import {RouteHttp} from "../route/route.http";
+import {RouteHttp} from '../route/route.http';
+import {Router} from '@angular/router';
+import {ErrorDialog} from '../errordialog/error.dialog';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import {ErrorDialogService} from '../errordialog/error.dialog.service';
+import {Assortment} from '../login/user';
+
 declare var $: any;
 
 @Component({
@@ -12,11 +19,13 @@ export class SubmitDialog implements OnInit, AfterViewInit {
 
   states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware',
     'Florida', 'Georgia'];
+  bsModalRef: BsModalRef;
   selectedValue: string;
   chip: string = '';
-  chipGroup = new Map<any, string>()
+  chipGroup = new Map<any, string>();
   newIndex: number = 0;
   isSupport: any;
+  assortmentList: any = new Array();
   params = {
     content: '',
     title: '',
@@ -24,16 +33,16 @@ export class SubmitDialog implements OnInit, AfterViewInit {
     top: 0,
     toTop: false,
     tips: ''
-  }
+  };
   @Input()
   tips = [
     {name: 'Lemon'},
     {name: 'Lime'},
     {name: 'Apple'},
-  ]
+  ];
 
-  constructor(public dialogRef: MatDialogRef<SubmitDialog>, @Inject(MAT_DIALOG_DATA) public data: any,
-              private http: RouteHttp, private el: ElementRef, private render: Renderer2) {
+  constructor(protected dialog: MatDialog, private  router: Router, @Inject(MAT_DIALOG_DATA) public data: any,
+              private http: RouteHttp, private el: ElementRef, private render: Renderer2, protected errorDialogService: ErrorDialogService) {
 
   }
 
@@ -56,14 +65,21 @@ export class SubmitDialog implements OnInit, AfterViewInit {
     this.params.title = this.data.title;
     this.params.assortment = this.selectedValue;
     this.params.top = this.data.top;
-    this.params.toTop = this.data.toTop;
+    this.params.toTop = this.isSupport;
     this.params.tips = this.jsonToString(this.tips);
     console.log(this.params);
     this.http.doPost(this.params, '/articles/insertArticle').subscribe(data => {
       // todo 显示提交错误的窗口
+      if (data.success) {
+        this.router.navigateByUrl('/showarticle/' + data.result);
+      }else {
+        console.log('alskdf');
+      }
+    }, error => {
+      const body = error._body;
+      this.errorDialogService.openModalWithComponent(body);
     });
   }
-
   onKeyUp(event: any) {
     console.log(this.isSupport);
     if (event.code === 'Enter') {

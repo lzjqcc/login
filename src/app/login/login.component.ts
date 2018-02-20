@@ -21,7 +21,7 @@ export class LoginComponent {
   };
   username: string;
 
-  constructor( private http: RouteHttp,private  router: Router) {
+  constructor( private http: RouteHttp,private  router: Router,private userService: UserService) {
   }
 
   doLogin(): void {
@@ -30,6 +30,7 @@ export class LoginComponent {
        this.router.navigateByUrl('/login');
      } else {
        this.router.navigateByUrl('/success');
+       this.userService.setCurrentAccountId(data.result.id);
      }
    });
   }

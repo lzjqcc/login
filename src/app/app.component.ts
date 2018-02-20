@@ -48,8 +48,8 @@ export class AppComponent {
   remove(fruit: any): void {
     let index = this.fruits.indexOf(fruit);
 
-    if (index >= 0) {
+  /*  if (index >= 0) {
       this.fruits.splice(index, 1);
-    }
+    }*/
   }
 }

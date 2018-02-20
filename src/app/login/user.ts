@@ -11,3 +11,21 @@ export class Friend {
   status: number;
   specialAttention: boolean;
 }
+export class DateLab {
+  create: string;
+  count: number;
+}
+export class Assortment {
+  assortmentName: string;
+  articleNum: number;
+}
+export class Comment {
+  comment: string;
+  articleId: number;
+  fromAccountId: number;
+  replayComentId: number;
+  source: number;
+  toAccountId: number;
+  currentAccountId: number;
+  pictureGroupId: number;
+}

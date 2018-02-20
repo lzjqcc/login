@@ -7,11 +7,16 @@ import {ActivatedRoute, Router} from '@angular/router';
 
 @Injectable()
 export class UserService {
-
+  currentAccountId: number;
   constructor(private http: Http, private router: Router) {
 
   }
-
+  public setCurrentAccountId(currentAccountId: number): void {
+    this.currentAccountId = currentAccountId;
+  }
+  public getCurrentAccountId(): number {
+    return this.currentAccountId;
+  }
 
 // application/x-www-form-urlencoded
   doLogin(user: User) {

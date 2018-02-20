@@ -8,6 +8,7 @@ import {MatDialog, MatDialogRef} from "@angular/material";
 import { ImageDialog} from "./image.dialog";
 import {SubmitDialog} from "./submit.dialog";
 import {ArticleSertice} from "./article.sertice";
+import {ErrorDialog} from '../errordialog/error.dialog';
 
 declare var jQuery: any;
 declare let ace: any;
@@ -22,7 +23,7 @@ export class ArticleComponent implements OnInit, AfterContentChecked {
   lastBeforeCloseResult: string;
   dialogRef: MatDialogRef<ImageDialog> | null;
   editor: any;
-  title: string;
+  value: string;
   @Output()
   content: string;
   private lastColor: string;
@@ -44,7 +45,7 @@ export class ArticleComponent implements OnInit, AfterContentChecked {
       this.dialog.open(SubmitDialog,{
         width: '40%',
         height: '50%',
-        data: {title: this.title, content: this.content}
+        data: {title: this.value, content: this.content}
       });
     }
   }
@@ -171,6 +172,6 @@ export class ArticleComponent implements OnInit, AfterContentChecked {
   }
 
   private openImageDialog() {
-    this.dialog.open(ImageDialog);
+    this.dialog.open(ErrorDialog);
   }
 }
