@@ -7,9 +7,23 @@ import {ActivatedRoute, Router} from '@angular/router';
 
 @Injectable()
 export class UserService {
-  currentAccountId: number;
+  private currentAccountId: number;
+  private currentAccountName: string;
+  private headIcon: string;
   constructor(private http: Http, private router: Router) {
 
+  }
+  public setHeadIcon(icon: string)  {
+    this.headIcon = icon;
+  }
+  public getHeadIcon(): string {
+    return this.headIcon;
+  }
+  public setCurrentAccountName(currentAccountName: string): void {
+    this.currentAccountName = currentAccountName;
+  }
+  public getCurrentAccountName(): string {
+    return this.currentAccountName;
   }
   public setCurrentAccountId(currentAccountId: number): void {
     this.currentAccountId = currentAccountId;

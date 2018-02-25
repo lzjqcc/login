@@ -7,6 +7,7 @@ import {ArticleComponent} from "../aritle/article.component";
 import {MarkdownEditorComponent} from "../md-editor/md-editor.component";
 import {TestCompontent} from "../test/test.compontent";
 import {ShowarticleComponent} from "../showarticle/showarticle.component";
+import {UserdetailsComponent} from '../userdetails/userdetails.component';
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -14,7 +15,8 @@ const appRoutes: Routes = [
   {path: 'success', component: SuccessComponent},
   {path: 'md', component: MarkdownEditorComponent},
   {path: 'test', component: TestCompontent},
-  {path: 'showarticle/:id', component: ShowarticleComponent}
+  {path: 'showarticle/:id', component: ShowarticleComponent},
+  {path: 'showuser', component: UserdetailsComponent}
 ];
 
 @NgModule({

@@ -32,6 +32,7 @@ import { ModalModule } from 'ngx-bootstrap';
 import {ErrorDialogService} from './errordialog/error.dialog.service';
 import {CommentService} from './comment/commentService';
 import { DatePipe } from '@angular/common';
+import {UserdetailsComponent} from './userdetails/userdetails.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { DatePipe } from '@angular/common';
     SubmitDialog,
     ShowarticleComponent,
     ShowcommentComponent,
-    ErrorDialog
+    ErrorDialog,
+    UserdetailsComponent
   ],
   imports: [
     BrowserModule,

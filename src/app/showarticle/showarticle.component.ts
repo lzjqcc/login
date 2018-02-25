@@ -21,6 +21,7 @@ export class ShowarticleComponent {
   title: string;
   content: string;
   currentAccountId: any;
+  toAccountId: number;
   dateList: any = new Array();
   assortmentList: any = new Array();
 

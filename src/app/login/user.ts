@@ -2,6 +2,23 @@ export class User {
   email: string;
   password: string;
 }
+export class UserDetails {
+  headIcon: string;
+  gender: string;
+  birth: any;
+  city: string;
+  age: number;
+  blogYear: number;
+  mobile: string;
+  occupation: string;
+  personalSignature: string;
+  sign: string;
+  userName: string;
+  email: string;
+  password: string;
+  school: string;
+
+}
 export class Friend {
   id: number;
   friendName: string;

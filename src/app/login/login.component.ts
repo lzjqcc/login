@@ -31,6 +31,8 @@ export class LoginComponent {
      } else {
        this.router.navigateByUrl('/success');
        this.userService.setCurrentAccountId(data.result.id);
+       this.userService.setCurrentAccountName(data.result.userName);
+       this.userService.setHeadIcon(data.result.headIcon);
      }
    });
   }

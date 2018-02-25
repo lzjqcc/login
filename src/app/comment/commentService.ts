@@ -7,6 +7,12 @@ export class CommentService {
   constructor(private userService: UserService) {
 
   }
+  public getHeadIcon(): string {
+    return this.userService.getHeadIcon();
+  }
+  public getCurrentAccoutName() : string {
+    return this.userService.getCurrentAccountName();
+  }
   public getCurrentAccountId(): number {
     return this.userService.getCurrentAccountId();
   }
